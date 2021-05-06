@@ -1,0 +1,25 @@
+@use 'pages/home';
+
+@font-face {
+  font-family: 'Roboto';
+  src: url("../fonts/Roboto-Regular.ttf") format('truetype');
+}
+
+h1 {
+  background-color: gold;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+body {
+  background-color: beige;
+  font-family: 'Roboto', sans-serif;
+}
+
+.logo {
+  background-color: seagreen;
+  background-size: cover;
+  height: 200px;
+  width: 200px;
+  margin: 0 auto;
+}
