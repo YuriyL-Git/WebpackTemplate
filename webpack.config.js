@@ -127,7 +127,12 @@ module.exports = {
               },
             },
           },
-          'sass-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true
+            }
+          },
         ],
       },
       {
@@ -154,7 +159,7 @@ module.exports = {
       {
         test: /\.ts$/,
         exclude: /node_modules/,
-        use: jsLoaders('@babel/preset-typescript', false),
+        use: jsLoaders('@babel/preset-typescript'),
       },
     ],
   },
