@@ -5,9 +5,13 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 const CssMimimizerWebpackPlugin = require('css-minimizer-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 const isDev = process.env.NODE_ENV === 'development';
 const isProd = !isDev;
+
+const esLintPlugin = (isDevevelopment) => isDevevelopment ? [] : [ new ESLintPlugin({ extensions: ['ts', 'js'] }) ];
+
 
 const optimization = () => {
   const config = {
@@ -22,18 +26,18 @@ const optimization = () => {
   }
   return config;
 };
-const jsLoaders = (preset, eslint = true) => {
+const jsLoaders = (preset/* , eslint = true */) => {
   const loaders = [{
     loader: "babel-loader",
     options: {
       presets: ["@babel/preset-env"]
     }
   }];
-  if (isDev && eslint) {
+/*   if (isDev && eslint) {
     loaders.push({
       loader: "eslint-loader"
     });
-  }
+  } */
 
   if (preset) loaders[0].options.presets.push(preset);
 
@@ -70,9 +74,11 @@ module.exports = {
   optimization: optimization(),
   devServer: {
     port: 4200,
-    open: true
+    open: true,
+    contentBase: path.join(__dirname, 'dist'),
   },
   plugins: [
+    ...esLintPlugin(isDev),
     new HTMLWebpackPlugin({
       template: "./index.html",
       minify: isProd
