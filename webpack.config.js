@@ -1,6 +1,6 @@
 const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
@@ -10,11 +10,11 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 const isDev = process.env.NODE_ENV === 'development';
 const isProd = !isDev;
 
-const esLintPlugin = (isDevevelopment) => (isDevevelopment ? [] : [new ESLintPlugin({ extensions: ['ts', 'js'] })]);
-
+const esLintPlugin = (isDevevelopment) => (isDevevelopment ? [new ESLintPlugin({extensions: ['ts', 'js']})] : []);
+console.log('esLintPlugin = ', esLintPlugin(isDev));
 const optimization = () => {
   const config = {
-    splitChunks: { chunks: 'all' },
+    splitChunks: {chunks: 'all'},
   };
   if (isProd) {
     config.minimize = true;
@@ -51,9 +51,9 @@ module.exports = {
   /* to exclude extensions from the paths, and for
   possibility to write shorthand paths */
   resolve: {
-    extensions: ['.js', '.json', '.png'],
+    extensions: ['.ts', '.js', '.json', '.png'],
     alias: {
-      '@models': path.resolve(__dirname, 'src/models'),
+      '@scripts': path.resolve(__dirname, 'src/scripts'),
       '@': path.resolve(__dirname, 'src'),
     },
   },
