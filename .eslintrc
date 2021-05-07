@@ -4,30 +4,58 @@
     "es2021": true
   },
   "extends": [
+    "airbnb-typescript",
     "airbnb-typescript/base",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:eslint-comments/recommended",
+    "plugin:jest/recommended",
+    "plugin:promise/recommended",
+    "plugin:unicorn/recommended",
     "eslint:recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "project": "./tsconfig.json"
   },
   "plugins": [
-    "@typescript-eslint"
+    "@typescript-eslint",
+    "eslint-comments",
+    "jest",
+    "promise",
+    "unicorn"
   ],
   "rules": {
     "no-plusplus": "off",
     "no-console": "warn",
-    "max-len": ["warn", { "code": 120 }],
-    "indent": ["warn", 2, {
-      "SwitchCase": 1
-    }],
-    "@typescript-eslint/indent": ["warn", 2, {
-      "SwitchCase": 1
-    }],
+    "max-len": [
+      "warn",
+      {
+        "code": 120
+      }
+    ],
+    "indent": [
+      "warn",
+      2,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "@typescript-eslint/indent": [
+      "warn",
+      2,
+      {
+        "SwitchCase": 1
+      }
+    ],
     "import/prefer-default-export": "off",
-    "no-param-reassign": ["error", {
-      "props": false
-    }]
+    "no-param-reassign": [
+      "error",
+      {
+        "props": false
+      }
+    ]
   }
 }
