@@ -30,6 +30,9 @@ const jsLoaders = (preset) => {
     loader: 'babel-loader',
     options: {
       presets: ['@babel/preset-env'],
+      plugins: [
+        ['@babel/plugin-proposal-decorators', {legacy: true }],
+      ],
     },
   }];
 
@@ -130,7 +133,7 @@ module.exports = {
           {
             loader: 'sass-loader',
             options: {
-              sourceMap: true
+              sourceMap: true,
             }
           },
         ],
